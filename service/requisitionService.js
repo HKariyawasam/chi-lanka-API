@@ -70,10 +70,10 @@ router.route("/getRequisitionByID/:rID").get(async (req, res) => {
 })
 
 
-router.route("/deleteRequisition").post(async (req, res) => {
+router.route("/deleteRequisition/:rID").post(async (req, res) => {
 
-    let rID = req.body.data.id;
-    await Requisition.findOneAndDelete({ id: rID })
+    let rID = req.params.rID;
+    await Requisition.findOneAndDelete({ requisitionid: rID })
         .then(() => {
             res.status(200).send({ status: "Requisition Record deleted" });
         }).catch(() => {
@@ -115,7 +115,7 @@ router.route("/updateRequisition/:rID").put(async (req, res) => {
         item03
     }
 
-    const update = await Requisition.findOneAndUpdate({ id: rID }, updateRequisition)
+    const update = await Requisition.findOneAndUpdate({ requisitionid: rID }, updateRequisition)
         .then(() => {
             res.status(200).send({ status: "Requisition Record updated" })
             console.log(err);

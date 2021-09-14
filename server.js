@@ -45,16 +45,16 @@ const requisitionRouter = require("./service/requisitionService.js");
 app.use("/requisition", requisitionRouter);
 
 //Staff Management Routes
-const Staff = require("./service/staffService.js");
-app.use("/staff", Staff);
+const StaffRouter = require("./service/staffService.js");
+app.use("/staff", StaffRouter);
 
-const SiteManager = require("./service/siteManagerService.js");
-app.use("/sitemanager", SiteManager);
+const SiteManagerRouter = require("./service/siteManagerService.js");
+app.use("/sitemanager", SiteManagerRouter);
 
-const ProcumentStaff = require("./service/procuementStaffService.js");
-app.use("/procumentstaff", ProcumentStaff);
+const ProcumentStaffRouter = require("./service/procuementStaffService.js");
+app.use("/procumentstaff", ProcumentStaffRouter);
 
-const ManagementStaff = require("./service/managementStaffService.js");
-app.use("/managementstaff", ManagementStaff);
+const ManagementStaffRouter = require("./service/managementStaffService.js");
+app.use("/managementstaff", ManagementStaffRouter);
 
 

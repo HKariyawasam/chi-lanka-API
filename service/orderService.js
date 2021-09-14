@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const moment = require('moment');
-const {v4: uuidv4} = require("uuid");
 let Order = require("../class/Order");
 
 router.route("/addOrder").post((req, res) => {
@@ -63,14 +62,26 @@ router.route("/getOrderByID/:rID").get(async (req, res) => {
             console.log(err.message);
             res.status(500).send({ status: "Server error", error: err.message });
         })
+    })
+
+//this route is used to find the last added order details
+router.route("/lastAddedOrder").get(async (req, res) => {
+
+    const order = await Order.find().sort({ _id: -1 }).limit(1)
+        .then((order) => {
+            res.status(200).send({ status: "Order fetched", order: order })
+        }).catch(() => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with get Order", error: err.message });
+        })
 
 })
 
 
-router.route("/deleteOrder").post(async (req, res) => {
+router.route("/deleteOrder/:orderID").post(async (req, res) => {
 
-    let oID = req.body.data.id;
-    await Order.findOneAndDelete({ id: oID })
+    let oID = req.params.orderID;
+    await Order.findOneAndDelete({ orderid: oID })
         .then(() => {
             res.status(200).send({ status: "Order Record deleted" });
         }).catch(() => {
@@ -111,7 +122,7 @@ router.route("/updateOrder/:orderid").put(async (req, res) => {
         item03
     }
 
-    const update = await Order.findOneAndUpdate({ id: oID }, updateOrder)
+    const update = await Order.findOneAndUpdate({ orderid: oID }, updateOrder)
         .then(() => {
             res.status(200).send({ status: "Order Record updated" })
         }).catch((err) => {

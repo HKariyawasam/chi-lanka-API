@@ -3,50 +3,51 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const requisitionSchema = new Schema({
-    requisitionid : {
+    requisitionid: {
         type: String,
         required: true,
-        unique: true 
+        unique: true
     },
 
-    requisiondate : {
+    requisiondate: {
         type: String,
         required: true,
-    
+
     },
 
-    suppliername : {
+    suppliername: {
         type: String,
         required: true,
         maxlength: 200
     },
 
-    title : {
+    title: {
         type: String,
         required: true
     },
 
-    shipto : {
+    shipto: {
         type: String,
-        required : true
+        required: true
     },
 
-    status : {
+    status: {
         type: String,
-        required : true
+        required: true,
+        enum: ['Waiting for Approval', 'Approved', 'Referred', 'Declined'],
     },
 
-    total : {
+    total: {
         type: Number,
-        required : true
+        required: true
     },
 
-    comment : {
+    comment: {
         type: String,
-        required : true
+        required: true
     },
 
-    item01 : {
+    item01: {
         type: String,
         required: true
     },
