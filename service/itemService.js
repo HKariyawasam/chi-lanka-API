@@ -4,7 +4,7 @@ let Item = require("../class/Item");
 router.route("/addItem").post((req, res) => {
     const itemid = req.body.itemid;
     const itemname = req.body.itemname;
-    const price = req.body.price;
+    const price = Number(req.body.price);
     const Description = req.body.Description;
 
     const newItem = new Item({

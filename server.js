@@ -57,4 +57,7 @@ app.use("/procumentstaff", ProcumentStaffRouter);
 const ManagementStaffRouter = require("./service/managementStaffService.js");
 app.use("/managementstaff", ManagementStaffRouter);
 
+const PaymentRouter =  require("./service/paymentService.js");
+app.use("/payment", PaymentRouter);
+
 

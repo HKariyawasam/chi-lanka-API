@@ -5,7 +5,7 @@ let Payment = require("../class/Payment");
 router.route("/createPayment").post((req, res) => {
     const paymentid = req.body.paymentid;
     const orderid = req.body.orderid;
-    const totalAmount = req.body.totalAmount;
+    const totalAmount = Number(req.body.totalAmount);
     const paymentDesc = req.body.paymentDesc;
     const payDate = moment().format('YYYY-MM-DD');
 

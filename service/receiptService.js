@@ -6,8 +6,8 @@ router.route("/addReceipt").post((req, res) => {
     const receiptid = uuidv4();
     const orderno = req.body.orderno;
     const receiptdate = req.body.receiptdate;
-    const tax = req.body.tax;
-    const totammount = req.body.totammount;
+    const tax = Number(req.body.tax);
+    const totammount = Number(req.body.totammount);
 
     const newReceipt = new Receipt({
         receiptid,
