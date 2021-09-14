@@ -54,12 +54,12 @@ const orderSchema = new Schema({
 
     item02: {
         type: String,
-        required: true
+
     },
 
     item03: {
         type: String,
-        required: true
+
     }
 })
 

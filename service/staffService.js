@@ -9,12 +9,12 @@ router.route("/addStaff").post((req, res) => {
     const name = req.body.name;
     const address = req.body.address;
     const designation = req.body.designation;
-    const contactNumber = req.body.contactNumber;
-    const salary = req.body.salary;
+    const contactNumber = Number(req.body.contactNumber);
+    const salary = Number(req.body.salary);
     const joinedDate = moment(req.body.joinedDate).format('YYYY-MM-DD');
     const work_site_id = req.body.work_site_id;
-    const hours = req.body.hours;
-    const bonus = req.body.bonus;
+    const hours = Number(req.body.hours);
+    const bonus = Number(req.body.bonus);
 
     //constructor of the base class schema
     const newStaff = new Staff({

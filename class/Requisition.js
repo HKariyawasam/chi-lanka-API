@@ -39,7 +39,8 @@ const requisitionSchema = new Schema({
 
     total: {
         type: Number,
-        required: true
+        required: true,
+        minLength: 2
     },
 
     comment: {
@@ -60,7 +61,19 @@ const requisitionSchema = new Schema({
     item03: {
         type: String,
         required: true
+    },
+
+    qty01: {
+        type: Number,
+        required: true
+    },
+    qty02: {
+        type: Number,
+    },
+    qty03: {
+        type: Number,
     }
+
 })
 
 const Requisition = mongoose.model("Requisition", requisitionSchema);

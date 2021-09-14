@@ -83,5 +83,23 @@ router.route("/searchAnItem/:itemName").get((req, res) => {
 
 })
 
+router.route("/getItemByID/:iID").get(async (req, res) => {
+
+    let iID = req.params.iID;//rental id taken from front end
+
+    const order = await Item.findOne({ itemid: iID })
+        .then((item) => {
+            if (item == null) {
+                res.status(200).send({ status: "No Order Record Retrieved" })
+            }
+            else {
+                res.status(200).send({ status: "Order Record Retrieved", item: item })
+            }
+        }).catch(() => {
+            console.log(err.message);
+            res.status(500).send({ status: "Server error", error: err.message });
+        })
+})
+
 
 module.exports = router;

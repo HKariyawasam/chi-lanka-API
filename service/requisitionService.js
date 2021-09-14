@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const moment = require('moment');
-const {v4: uuidv4} = require("uuid");
+const { v4: uuidv4 } = require("uuid");
 let Requisition = require("../class/Requisition");
 
 router.route("/addRequisition").post((req, res) => {
@@ -10,11 +10,14 @@ router.route("/addRequisition").post((req, res) => {
     const title = req.body.title;
     const shipto = req.body.shipto;
     const status = req.body.status;
-    const total = req.body.total;
+    const total = Number(req.body.total);
     const comment = req.body.comment;
-    const item01 = req.body.item01;
-    const item02 = req.body.item02;
-    const item03 = req.body.item03;
+    const item01 = Number(req.body.item01);
+    const item02 = Number(req.body.item02);
+    const item03 = Number(req.body.item03);
+    const qty01 = Number(req.body.qty01);
+    const qty02 = Number(req.body.qty02);
+    const qty03 = Number(req.body.qty03);
 
     const newRequisition = new Requisition({
         requisitionid,
@@ -27,7 +30,10 @@ router.route("/addRequisition").post((req, res) => {
         comment,
         item01,
         item02,
-        item03
+        item03,
+        qty01,
+        qty02,
+        qty03
     })
 
     newRequisition.save().then(() => {
@@ -84,36 +90,13 @@ router.route("/deleteRequisition/:rID").post(async (req, res) => {
 
 
 router.route("/updateRequisition/:rID").put(async (req, res) => {
-    console.log(req.body);
+
     let rID = req.params.rID;
 
 
-    const {  
-        requisitionid,
-        requisiondate,
-        suppliername,
-        title,
-        shipto,
-        status,
-        total,
-        comment,
-        item01,
-        item02,
-        item03 } = req.body;
+    const { requisitionid, requisiondate, suppliername, title, shipto, status, total, comment, item01, item02, item03, qty01, qty02, qty03 } = req.body;
 
-    const updateRequisition = {
-        requisitionid,
-        requisiondate,
-        suppliername,
-        title,
-        shipto,
-        status,
-        total,
-        comment,
-        item01,
-        item02,
-        item03
-    }
+    const updateRequisition = { requisitionid, requisiondate, suppliername, title, shipto, status, total, comment, item01, item02, item03, qty01, qty02, qty03 }
 
     const update = await Requisition.findOneAndUpdate({ requisitionid: rID }, updateRequisition)
         .then(() => {

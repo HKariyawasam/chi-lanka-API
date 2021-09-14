@@ -36,7 +36,7 @@ router.route("/addOrder").post((req, res) => {
     })
 })
 
-router.route("/displayOrder").get((req, res) => {
+router.route("/displayOrders").get((req, res) => {
 
     Order.find().then((order) => {
         res.json(order)
@@ -62,7 +62,7 @@ router.route("/getOrderByID/:rID").get(async (req, res) => {
             console.log(err.message);
             res.status(500).send({ status: "Server error", error: err.message });
         })
-    })
+})
 
 //this route is used to find the last added order details
 router.route("/lastAddedOrder").get(async (req, res) => {
@@ -92,35 +92,12 @@ router.route("/deleteOrder/:orderID").post(async (req, res) => {
 
 
 router.route("/updateOrder/:orderid").put(async (req, res) => {
-    console.log(req.body);
+
     let oID = req.params.orderid;
 
-    const {  
-        orderid,
-        orderdate,
-        suppliername,
-        title,
-        shipto,
-        status,
-        total,
-        comment,
-        item01,
-        item02,
-        item03 } = req.body;
+    const { orderid, orderdate, suppliername, title, shipto, status, total, comment, item01, item02, item03 } = req.body;
 
-    const updateOrder = {
-        orderid,
-        orderdate,
-        suppliername,
-        title,
-        shipto,
-        status,
-        total,
-        comment,
-        item01,
-        item02,
-        item03
-    }
+    const updateOrder = { orderid, orderdate, suppliername, title, shipto, status, total, comment, item01, item02, item03 }
 
     const update = await Order.findOneAndUpdate({ orderid: oID }, updateOrder)
         .then(() => {
