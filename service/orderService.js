@@ -37,4 +37,89 @@ router.route("/addOrder").post((req, res) => {
     })
 })
 
+router.route("/displayOrder").get((req, res) => {
+
+    Order.find().then((order) => {
+        res.json(order)
+
+    }).catch((err) => {
+        console.log(err);
+    })
+})
+
+router.route("/getOrderByID/:rID").get(async (req, res) => {
+
+    let rID = req.params.rID;//rental id taken from front end
+
+    const order = await Order.findOne({ id: rID })
+        .then((order) => {
+            if (order == null) {
+                res.status(200).send({ status: "No Order Record Retrieved" })
+            }
+            else {
+                res.status(200).send({ status: "Order Record Retrieved", order: order })
+            }
+        }).catch(() => {
+            console.log(err.message);
+            res.status(500).send({ status: "Server error", error: err.message });
+        })
+
+})
+
+
+router.route("/deleteOrder").post(async (req, res) => {
+
+    let oID = req.body.data.id;
+    await Order.findOneAndDelete({ id: oID })
+        .then(() => {
+            res.status(200).send({ status: "Order Record deleted" });
+        }).catch(() => {
+            console.log(err);
+            res.status(500).send({ status: "Error with deleting order record", error: err.message });
+        })
+})
+
+
+router.route("/updateOrder/:orderid").put(async (req, res) => {
+    console.log(req.body);
+    let oID = req.params.orderid;
+
+    const {  
+        orderid,
+        orderdate,
+        suppliername,
+        title,
+        shipto,
+        status,
+        total,
+        comment,
+        item01,
+        item02,
+        item03 } = req.body;
+
+    const updateOrder = {
+        orderid,
+        orderdate,
+        suppliername,
+        title,
+        shipto,
+        status,
+        total,
+        comment,
+        item01,
+        item02,
+        item03
+    }
+
+    const update = await Order.findOneAndUpdate({ id: oID }, updateOrder)
+        .then(() => {
+            res.status(200).send({ status: "Order Record updated" })
+        }).catch((err) => {
+            console.log(err);
+            res.status(500).send({ status: "Server error Error with updating data", error: err.message });
+        })
+
+})
+
+
 module.exports = router;
