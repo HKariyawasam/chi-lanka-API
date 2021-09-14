@@ -17,7 +17,7 @@ router.route("/addItem").post((req, res) => {
     newItem.save().then(() => {
         res.status(200).send({ message: "Item is added" })
     }).catch((err) => {
-        res.status(300).send({ status: "Error with item Insersion", erroe: err.message });
+        res.status(300).send({ status: "Error with item Insersion", error: err.message });
     })
 })
 
