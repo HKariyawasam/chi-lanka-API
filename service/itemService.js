@@ -24,7 +24,7 @@ router.route("/addItem").post((req, res) => {
 //To delete a specific item
 router.route("/removeItem/:itemID").delete(async (req, res) => {
 
-    let item = req.params.itemID;//supplier id taken from frontend
+    let item = req.params.itemID;//item id taken from frontend
 
     await Item.findOneAndDelete({ itemid: item })
         .then(() => {
@@ -52,7 +52,7 @@ router.route("/displayAvailableItems").get((req, res) => {
 //To update a specific item available in system
 router.route("/updateItem/:itemID").put(async (req, res) => {
 
-    let item = req.params.itemID;//supplier Id taken from the frontend
+    let item = req.params.itemID;//items Id taken from the frontend
 
     const { itemid, itemname, price, Description } = req.body;
 
@@ -69,5 +69,19 @@ router.route("/updateItem/:itemID").put(async (req, res) => {
         })
 
 })
+
+router.route("/searchAnItem/:itemName").get((req, res) => {
+
+    let val = req.params.itemName;
+
+    Item.find({ to: { $regex: "^" + val + ".*", $options: 'i' } }).then((items) => {
+        res.json(items)
+
+    }).catch((err) => {
+        console.log(err);
+    })
+
+})
+
 
 module.exports = router;

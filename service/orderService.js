@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const moment = require('moment');
-const {v4: uuidv4} = require("uuid");
+const { v4: uuidv4 } = require("uuid");
 let Order = require("../class/Order");
 
 router.route("/addOrder").post((req, res) => {
@@ -35,6 +35,20 @@ router.route("/addOrder").post((req, res) => {
     }).catch((err) => {
         res.status(300).send({ status: "Error in Order Record Insertion", error: err.message });
     })
+})
+
+
+//this route is used to find the last added order details
+router.route("/lastAddedOrder").get(async (req, res) => {
+
+    const order = await Order.find().sort({ _id: -1 }).limit(1)
+        .then((order) => {
+            res.status(200).send({ status: "Order fetched", order: order })
+        }).catch(() => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with get Order", error: err.message });
+        })
+
 })
 
 module.exports = router;

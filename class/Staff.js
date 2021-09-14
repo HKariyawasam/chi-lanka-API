@@ -11,10 +11,12 @@ const StaffSchema = new Schema({
     name: {
         type: String,
         required: true,
+        maxlength: 200
     },
     address: {
         type: String,
         required: true,
+        maxlength: 300
     },
     designation: {
         type: String,
@@ -30,6 +32,7 @@ const StaffSchema = new Schema({
     salary: {
         type: Number,
         required: true,
+        minlength: 5
     },
     joinedDate: {
         type: String,
@@ -42,6 +45,7 @@ const SiteManagersSchema = extendSchema(StaffSchema, {
     work_site_id: {
         type: Number,
         required: true,
+        enum: ['S001', 'S002', 'S003', 'S004', 'S005'],
     },
 
 
@@ -51,6 +55,7 @@ const ProcumentStaffSchema = extendSchema(StaffSchema, {
     hours: {
         type: Number,
         required: true,
+        minlength: 2
     },
 
 
@@ -60,6 +65,8 @@ const ManagementStaffSchema = extendSchema(StaffSchema, {
     bonus: {
         type: Number,
         required: true,
+        minlength: 5,
+        maxlength: 5
     },
 
 
