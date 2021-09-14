@@ -27,7 +27,7 @@ connection.once("open", () => {
 
 app.listen(port, () => {
     console.log(`Server Is Running on Port: ${port}`);
-});
+})
 
 const supplierRouter = require("./service/supplierService.js");
 app.use("/supplier", supplierRouter);
@@ -38,11 +38,12 @@ app.use("/order", orderRouter);
 const itemRouter = require("./service/itemService.js");
 app.use("/item", itemRouter);
 
-// const receiptRouter = require("./service/receiptService.js");
-// app.use("/receipt", receiptRouter);
+const receiptRouter = require("./service/receiptService.js");
+app.use("/receipt", receiptRouter);
 
-// const requisitionRouter = require("./service/requisitionService.js");
-// app.use("/requisition", requisitionRouter);
+const requisitionRouter = require("./service/requisitionService.js");
+app.use("/requisition", requisitionRouter);
+
 //Staff Management Routes
 const Staff = require("./service/staffService.js");
 app.use("/staff", Staff);

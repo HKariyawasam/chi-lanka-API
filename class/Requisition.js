@@ -9,7 +9,7 @@ const requisitionSchema = new Schema({
         unique: true 
     },
 
-    Date : {
+    requisiondate : {
         type: String,
         required: true,
     
@@ -62,7 +62,7 @@ const requisitionSchema = new Schema({
     }
 })
 
-const Requisition = mongoose.class("Requisition", requisitionSchema);
+const Requisition = mongoose.model("Requisition", requisitionSchema);
 module.exports = Requisition;
 
 
