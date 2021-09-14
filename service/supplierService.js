@@ -78,5 +78,17 @@ router.route("/updateSupplierDetails/:supID").put(async (req, res) => {
 
 })
 
+router.route("/getSupplierByName/:sName").get(async (req, res) => {
+
+    let sName = req.params.sName;//rental id taken from front end
+
+    Supplier.find({ suppliername: { $regex: "^" + sName + ".*", $options: 'i' } }).then((supplier) => {
+        res.json(supplier)
+
+    }).catch(() => {
+        console.log(err.message);
+        res.status(500).send({ status: "Server error", error: err.message });
+    })
+})
 
 module.exports = router;

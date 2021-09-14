@@ -66,7 +66,7 @@ router.route("/searchAnPayment/:oID").get((req, res) => {
 
     let pay = req.params.oID;
 
-    Payment.find({ to: { $regex: "^" + pay + ".*", $options: 'i' } }).then((payment) => {
+    Payment.find({ orderid: { $regex: "^" + pay + ".*", $options: 'i' } }).then((payment) => {
         res.json(payment)
 
     }).catch((err) => {

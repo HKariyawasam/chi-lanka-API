@@ -74,7 +74,7 @@ router.route("/searchAnItem/:itemName").get((req, res) => {
 
     let val = req.params.itemName;
 
-    Item.find({ to: { $regex: "^" + val + ".*", $options: 'i' } }).then((items) => {
+    Item.find({ itemName: { $regex: "^" + val + ".*", $options: 'i' } }).then((items) => {
         res.json(items)
 
     }).catch((err) => {
