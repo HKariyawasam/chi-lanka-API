@@ -29,3 +29,17 @@ app.listen(port, () => {
     console.log(`Server Is Running on Port: ${port}`);
 });
 
+//Staff Management Routes
+const Staff = require("./service/staffService.js");
+app.use("/staff", Staff);
+
+const SiteManager = require("./service/siteManagerService.js");
+app.use("/sitemanager", SiteManager);
+
+const ProcumentStaff = require("./service/procuementStaffService.js");
+app.use("/procumentstaff", ProcumentStaff);
+
+const ManagementStaff = require("./service/managementStaffService.js");
+app.use("/managementstaff", ManagementStaff);
+
+
