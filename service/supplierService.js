@@ -22,7 +22,7 @@ router.route("/addSupplier").post((req, res) => {
     newSupplier.save().then(() => {
         res.status(200).send({ message: "Supplier is added" })
     }).catch((err) => {
-        res.status(300).send({ status: "Error with supplier Insersion", erroe: err.message });
+        res.status(300).send({ status: "Error with supplier Insersion", error: err.message });
     })
 })
 
