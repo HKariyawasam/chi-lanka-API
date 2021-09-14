@@ -70,10 +70,10 @@ router.route("/getRequisitionByID/:rID").get(async (req, res) => {
 })
 
 
-router.route("/deleteRequisition/:rID").post(async (req, res) => {
+router.route("/deleteRequisition").post(async (req, res) => {
 
-    let rID = req.params.rID;
-    await Requisition.findOneAndDelete({ requisitionid: rID })
+    let rID = req.body.data.id;
+    await Requisition.findOneAndDelete({ id: rID })
         .then(() => {
             res.status(200).send({ status: "Requisition Record deleted" });
         }).catch(() => {
