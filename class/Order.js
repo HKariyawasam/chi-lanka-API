@@ -60,7 +60,24 @@ const orderSchema = new Schema({
     item03: {
         type: String,
         required: true
-    }
+    },
+
+    qty01 : {
+        type:Number,
+        required : true
+    },
+
+    qty02 : {
+        type:Number,
+        required : true
+    },
+
+    qty03 : {
+        type:Number,
+        required : true
+    },
+
+
 })
 
 const Order = mongoose.model("Order", orderSchema);

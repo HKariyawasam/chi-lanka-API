@@ -6,7 +6,7 @@ router.route("/addSupplier").post((req, res) => {
     const supplierid = uuidv4();
     const suppliername = req.body.suppliername;
     const address = req.body.address;
-    const contactnumber = req.body.contactnumber;
+    const contactnumber = Number(req.body.contactnumber);
     const itemid = req.body.itemid;
     const siteid = req.body.siteid;
 

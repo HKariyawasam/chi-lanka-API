@@ -9,11 +9,14 @@ router.route("/addOrder").post((req, res) => {
     const title = req.body.title;
     const shipto = req.body.shipto;
     const status = req.body.status;
-    const total = req.body.total;
+    const total = Number(req.body.total);
     const comment = req.body.comment;
     const item01 = req.body.item01;
     const item02 = req.body.item02;
     const item03 = req.body.item03;
+    const qty01 = Number(req.body.qty01);
+    const qty02 = Number(req.body.qty02);
+    const qty03 = Number(req.body.qty03);
 
     const newOrder = new Order({
         orderid,
@@ -26,7 +29,10 @@ router.route("/addOrder").post((req, res) => {
         comment,
         item01,
         item02,
-        item03
+        item03,
+        qty01,
+        qty02,
+        qty03
     })
 
     newOrder.save().then(() => {
@@ -106,7 +112,11 @@ router.route("/updateOrder/:orderid").put(async (req, res) => {
         comment,
         item01,
         item02,
-        item03 } = req.body;
+        item03,
+        qty01,
+        qty02,
+        qty03
+         } = req.body;
 
     const updateOrder = {
         orderid,
@@ -119,7 +129,10 @@ router.route("/updateOrder/:orderid").put(async (req, res) => {
         comment,
         item01,
         item02,
-        item03
+        item03,
+        qty01,
+        qty02,
+        qty03
     }
 
     const update = await Order.findOneAndUpdate({ orderid: oID }, updateOrder)
