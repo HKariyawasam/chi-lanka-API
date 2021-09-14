@@ -29,7 +29,6 @@ app.listen(port, () => {
     console.log(`Server Is Running on Port: ${port}`);
 });
 
-<<<<<<< HEAD
 const supplierRouter = require("./service/supplierService.js");
 app.use("/supplier", supplierRouter);
 
@@ -44,7 +43,6 @@ app.use("/item", itemRouter);
 
 // const requisitionRouter = require("./service/requisitionService.js");
 // app.use("/requisition", requisitionRouter);
-=======
 //Staff Management Routes
 const Staff = require("./service/staffService.js");
 app.use("/staff", Staff);
@@ -57,6 +55,5 @@ app.use("/procumentstaff", ProcumentStaff);
 
 const ManagementStaff = require("./service/managementStaffService.js");
 app.use("/managementstaff", ManagementStaff);
->>>>>>> eb1239fa5a501ba05b84e1223c4c171d0f6655b1
 
 
