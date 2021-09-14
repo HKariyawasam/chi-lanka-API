@@ -1,18 +1,18 @@
 const router = require("express").Router();
-let Supplier = require("../class/Supplier");
+let Receipt = require("../class/Receipt");
 const { v4: uuidv4 } = require("uuid");
 
-router.route("/addSupplier").post((req,res) => {
-    const supplierid = uuidv4();
-    const suppliername = req.body.suppliername;
+router.route("/addReceipt").post((req,res) => {
+    const receiptid = uuidv4();
+    const orderno = req.body.orderno;
     const address = req.body.address;
     const contactnumber = req.body.contactnumber;
     const itemid = req.body.itemid;
     const siteid = req.body.siteid;
 
     const newSupplier = new Supplier({
-        supplierid,
-        suppliername,
+        receiptid,
+        orderno,
         address,
         contactnumber,
         itemid,

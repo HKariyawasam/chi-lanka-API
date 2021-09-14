@@ -29,3 +29,19 @@ app.listen(port, () => {
     console.log(`Server Is Running on Port: ${port}`);
 });
 
+const supplierRouter = require("./service/supplierService.js");
+app.use("/supplier", supplierRouter);
+
+const orderRouter = require("./service/orderService.js");
+app.use("/order", orderRouter);
+
+const itemRouter = require("./service/itemService.js");
+app.use("/item", itemRouter);
+
+// const receiptRouter = require("./service/receiptService.js");
+// app.use("/receipt", receiptRouter);
+
+// const requisitionRouter = require("./service/requisitionService.js");
+// app.use("/requisition", requisitionRouter);
+
+
