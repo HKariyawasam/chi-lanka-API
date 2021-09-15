@@ -1,9 +1,10 @@
 const router = require("express").Router();
 const moment = require('moment');
 let Payment = require("../class/Payment");
+const { v4: uuidv4 } = require("uuid");
 
 router.route("/createPayment").post((req, res) => {
-    const paymentid = req.body.paymentid;
+    const paymentid = uuidv4();
     const orderid = req.body.orderid;
     const totalAmount = Number(req.body.totalAmount);
     const paymentDesc = req.body.paymentDesc;

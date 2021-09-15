@@ -14,7 +14,7 @@ router.route("/addOrderItems").post((req, res) => {
     const qty02 = Number(req.body.qty02);
     const qty03 = Number(req.body.qty03);
 
-    const newOrderItems = new Order({
+    const newOrderItems = new OrderItem({
         orderid,
         item01,
         item02,
