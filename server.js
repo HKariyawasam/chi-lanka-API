@@ -35,6 +35,9 @@ app.use("/supplier", supplierRouter);
 const orderRouter = require("./service/orderService.js");
 app.use("/order", orderRouter);
 
+const orderItemsRouter = require("./service/orderItemService.js");
+app.use("/orderItems", orderItemsRouter);
+
 const itemRouter = require("./service/itemService.js");
 app.use("/item", itemRouter);
 
@@ -57,7 +60,7 @@ app.use("/procumentstaff", ProcumentStaffRouter);
 const ManagementStaffRouter = require("./service/managementStaffService.js");
 app.use("/managementstaff", ManagementStaffRouter);
 
-const PaymentRouter =  require("./service/paymentService.js");
+const PaymentRouter = require("./service/paymentService.js");
 app.use("/payment", PaymentRouter);
 
 
