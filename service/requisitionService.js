@@ -6,6 +6,7 @@ let Requisition = require("../class/Requisition");
 router.route("/addRequisition").post((req, res) => {
     const requisitionid = uuidv4();
     const requisiondate = moment(req.body.requisiondate).format('YYYY-MMMM-DD');
+    const requisitionname = req.body.requisitionname;
     const suppliername = req.body.suppliername;
     const title = req.body.title;
     const shipto = req.body.shipto;
@@ -22,6 +23,7 @@ router.route("/addRequisition").post((req, res) => {
     const newRequisition = new Requisition({
         requisitionid,
         requisiondate,
+        requisitionname,
         suppliername,
         title,
         shipto,
@@ -94,9 +96,9 @@ router.route("/updateRequisition/:rID").put(async (req, res) => {
     let rID = req.params.rID;
 
 
-    const { requisitionid, requisiondate, suppliername, title, shipto, status, total, comment, item01, item02, item03, qty01, qty02, qty03 } = req.body;
+    const { requisitionid,requisitionname, requisiondate, suppliername, title, shipto, status, total, comment, item01, item02, item03, qty01, qty02, qty03 } = req.body;
 
-    const updateRequisition = { requisitionid, requisiondate, suppliername, title, shipto, status, total, comment, item01, item02, item03, qty01, qty02, qty03 }
+    const updateRequisition = { requisitionid,requisitionname, requisiondate, suppliername, title, shipto, status, total, comment, item01, item02, item03, qty01, qty02, qty03 }
 
     const update = await Requisition.findOneAndUpdate({ requisitionid: rID }, updateRequisition)
         .then(() => {

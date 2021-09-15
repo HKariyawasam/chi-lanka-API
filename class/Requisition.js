@@ -9,6 +9,10 @@ const requisitionSchema = new Schema({
         unique: true
     },
 
+    requisitionname : {
+        type : String
+    },
+
     requisiondate: {
         type: String,
         required: true,
