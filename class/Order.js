@@ -47,35 +47,35 @@ const orderSchema = new Schema({
         required: true
     },
 
-    item01: {
-        type: String,
-        required: true
-    },
+    // item01: {
+    //     type: String,
+    //     required: true
+    // },
 
-    item02: {
-        type: String,
+    // item02: {
+    //     type: String,
 
-    },
+    // },
 
-    item03: {
-        type: String,
+    // item03: {
+    //     type: String,
 
-    },
+    // },
 
-    qty01: {
-        type: Number,
+    // qty01: {
+    //     type: Number,
 
-    },
+    // },
 
-    qty02: {
-        type: Number,
+    // qty02: {
+    //     type: Number,
 
-    },
+    // },
 
-    qty03: {
-        type: Number,
+    // qty03: {
+    //     type: Number,
 
-    },
+    // },
 
 
 })

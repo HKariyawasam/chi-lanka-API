@@ -34,7 +34,7 @@ router.route("/addOrderItems").post((req, res) => {
     })
 })
 
-router.route("/displayOrderItems/:orderId").get((req, res) => {
+router.route("/displayOrderItems/:orderId").get(async(req, res) => {
 
     let orderId = req.params.orderId;//rental id taken from front end
 
