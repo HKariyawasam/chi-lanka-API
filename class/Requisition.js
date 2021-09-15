@@ -9,8 +9,8 @@ const requisitionSchema = new Schema({
         unique: true
     },
 
-    requisitionname : {
-        type : String
+    requisitionname: {
+        type: String
     },
 
     requisiondate: {
@@ -59,12 +59,12 @@ const requisitionSchema = new Schema({
 
     item02: {
         type: String,
-        required: true
+
     },
 
     item03: {
         type: String,
-        required: true
+
     },
 
     qty01: {
