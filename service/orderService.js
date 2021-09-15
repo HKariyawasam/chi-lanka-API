@@ -4,7 +4,7 @@ let Order = require("../class/Order");
 
 router.route("/addOrder").post((req, res) => {
     const orderid = req.body.orderid;
-    const orderdate = moment(req.body.orderdate).format('YYYY-MMMM-DD');
+    const orderdate = moment().format('YYYY-MMMM-DD');
     const suppliername = req.body.suppliername;
     const title = req.body.title;
     const shipto = req.body.shipto;
@@ -84,7 +84,7 @@ router.route("/lastAddedOrder").get(async (req, res) => {
 })
 
 
-router.route("/deleteOrder/:orderID").post(async (req, res) => {
+router.route("/deleteOrder/:orderID").delete(async (req, res) => {
 
     let oID = req.params.orderID;
     await Order.findOneAndDelete({ orderid: oID })

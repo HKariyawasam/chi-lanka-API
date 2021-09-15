@@ -37,4 +37,15 @@ router.route("/viewAReceipt/:receiptId").get((req, res) => {
 
 })
 
+
+router.route("/displayReceipts").get((req, res) => {
+
+    Receipt.find().then((receipt) => {
+        res.json(receipt)
+
+    }).catch((err) => {
+        console.log(err);
+    })
+})
+
 module.exports = router;
