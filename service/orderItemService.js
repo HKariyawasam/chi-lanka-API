@@ -34,11 +34,11 @@ router.route("/addOrderItems").post((req, res) => {
     })
 })
 
-router.route("/displayOrderItems/:orderId").get((req, res) => {
+router.route("/displayOrderItems/:orderId").get(async (req, res) => {
 
     let orderId = req.params.orderId;//rental id taken from front end
 
-    const orderItem = await OrderItem.findOne({ orderid: orderId })
+    const orderItem = OrderItem.findOne({ orderid: orderId })
         .then((orderItems) => {
             res.json(orderItems)
         }).catch(() => {
@@ -60,7 +60,7 @@ router.route("/deleteOrderItems/:orderID").delete(async (req, res) => {
 })
 
 
-router.route("/updateOrder/:orderid").put(async (req, res) => {
+router.route("/updateOrderItems/:orderid").put(async (req, res) => {
 
     let oID = req.params.orderid;
 
