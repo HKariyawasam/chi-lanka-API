@@ -14,7 +14,7 @@ router.route("/addOrderItems").post((req, res) => {
     const qty02 = Number(req.body.qty02);
     const qty03 = Number(req.body.qty03);
 
-    const newOrderItems = new Order({
+    const newOrderItems = new OrderItem({
         orderid,
         item01,
         item02,
@@ -38,7 +38,7 @@ router.route("/displayOrderItems/:orderId").get(async (req, res) => {
 
     let orderId = req.params.orderId;//rental id taken from front end
 
-    const orderItem = await OrderItem.findOne({ orderid: orderId })
+    const orderItem = OrderItem.findOne({ orderid: orderId })
         .then((orderItems) => {
             res.json(orderItems)
         }).catch(() => {
@@ -60,7 +60,7 @@ router.route("/deleteOrderItems/:orderID").delete(async (req, res) => {
 })
 
 
-router.route("/updateOrder/:orderid").put(async (req, res) => {
+router.route("/updateOrderItems/:orderid").put(async (req, res) => {
 
     let oID = req.params.orderid;
 
