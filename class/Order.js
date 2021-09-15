@@ -80,7 +80,7 @@ const orderSchema = new Schema({
 
 })
 
-const Order = mongoose.model("Order", orderSchema);
+const Order = mongoose.model("OrderItem", orderSchema);
 module.exports = Order;
 
 
