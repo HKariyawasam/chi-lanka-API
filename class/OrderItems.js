@@ -55,6 +55,21 @@ const orderItemSchema = new Schema({
 
     },
 
+    unitPrice01: {
+        type: Number,
+        required: true
+    },
+
+    unitPrice02: {
+        type: Number,
+
+    },
+
+    unitPrice03: {
+        type: Number,
+
+    },
+
 
 })
 

@@ -13,6 +13,9 @@ router.route("/addOrderItems").post((req, res) => {
     const qty01 = Number(req.body.qty01);
     const qty02 = Number(req.body.qty02);
     const qty03 = Number(req.body.qty03);
+    const unitPrice01 = Number(req.body.amount1);
+    const unitPrice02 = Number(req.body.amount2);
+    const unitPrice03 = Number(req.body.amount3);
 
     const newOrderItems = new OrderItem({
         orderid,
@@ -24,7 +27,10 @@ router.route("/addOrderItems").post((req, res) => {
         itemName03,
         qty01,
         qty02,
-        qty03
+        qty03,
+        unitPrice01,
+        unitPrice02,
+        unitPrice03
     })
 
     newOrderItems.save().then(() => {
@@ -64,9 +70,9 @@ router.route("/updateOrderItems/:orderid").put(async (req, res) => {
 
     let oID = req.params.orderid;
 
-    const { orderid, item01, item02, item03, itemName01, itemName02, itemName03, qty01, qty02, qty03 } = req.body;
+    const { orderid, item01, item02, item03, itemName01, itemName02, itemName03, qty01, qty02, qty03, unitPrice01, unitPrice02, unitPrice03 } = req.body;
 
-    const updateOrderItems = { orderid, item01, item02, item03, itemName01, itemName02, itemName03, qty01, qty02, qty03 }
+    const updateOrderItems = { orderid, item01, item02, item03, itemName01, itemName02, itemName03, qty01, qty02, qty03, unitPrice01, unitPrice02, unitPrice03 }
 
     const update = await OrderItem.findOneAndUpdate({ orderid: oID }, updateOrderItems)
         .then(() => {

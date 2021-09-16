@@ -8,6 +8,7 @@ router.route("/addSupplier").post((req, res) => {
     const address = req.body.address;
     const contactnumber = Number(req.body.contactnumber);
     const itemid = req.body.itemid;
+    const itemname = req.body.itemname;
     const siteid = req.body.siteid;
 
     const newSupplier = new Supplier({
@@ -82,7 +83,7 @@ router.route("/getSupplierByName/:sName").get(async (req, res) => {
 
     let sName = req.params.sName;//rental id taken from front end
 
-    Supplier.find({ suppliername: { $regex: "^" + sName + ".*", $options: 'i' } }).then((supplier) => {
+    Supplier.findOne({ suppliername: { $regex: "^" + sName + ".*", $options: 'i' } }).then((supplier) => {
         res.json(supplier)
 
     }).catch(() => {
@@ -90,5 +91,28 @@ router.route("/getSupplierByName/:sName").get(async (req, res) => {
         res.status(500).send({ status: "Server error", error: err.message });
     })
 })
+
+
+router.route("/searchSupplierItems/:supplier").get((req, res) => {
+
+    let val = req.params.supplier.trim();
+
+    Supplier.find({ suppliername: { $regex: ".*" + val + ".*", $options: 'i' } }).then((supplier) => {
+        var length = supplier.length;
+        let values = "";
+        for (var a = 0; a < supplier.length; a++) {
+            values += supplier[a].itemid + ",";
+        }
+        values = Array.from(new Set(values.split(','))).toString();
+        res.json(values);
+
+    }).catch((err) => {
+        console.log(err);
+    })
+
+})
+
+
+
 
 module.exports = router;

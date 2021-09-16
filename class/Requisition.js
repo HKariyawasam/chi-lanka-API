@@ -3,14 +3,11 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const requisitionSchema = new Schema({
+
     requisitionid: {
         type: String,
         required: true,
         unique: true
-    },
-
-    requisitionname: {
-        type: String
     },
 
     requisiondate: {
@@ -66,6 +63,20 @@ const requisitionSchema = new Schema({
         type: String,
 
     },
+    itemName01: {
+        type: String,
+        required: true
+    },
+
+    itemName02: {
+        type: String,
+
+    },
+
+    itemName03: {
+        type: String,
+
+    },
 
     qty01: {
         type: Number,
@@ -75,6 +86,17 @@ const requisitionSchema = new Schema({
         type: Number,
     },
     qty03: {
+        type: Number,
+    },
+
+    amount01: {
+        type: Number,
+        required: true
+    },
+    amount02: {
+        type: Number,
+    },
+    amount03: {
         type: Number,
     }
 
