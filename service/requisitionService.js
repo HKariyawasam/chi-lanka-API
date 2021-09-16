@@ -90,7 +90,7 @@ router.route("/getRequisitionByID/:rID").get(async (req, res) => {
 
 router.route("/deleteRequisition").post(async (req, res) => {
 
-    let rID = req.body.data.id;
+    let rID = req.body.requisition;
     await Requisition.findOneAndDelete({ requisitionid: rID })
         .then(() => {
             res.status(200).send({ status: "Requisition Record deleted" });
