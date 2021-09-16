@@ -3,33 +3,37 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const receiptSchema = new Schema({
-    receiptid : {
+    receiptid: {
         type: String,
         required: true,
-        unique: true 
+        unique: true
     },
 
-    orderno : {
+    orderno: {
         type: String,
         required: true,
-        
+
     },
 
-    receiptdate : {
+    receiptdate: {
         type: String,
         required: true,
     },
 
-    tax : {
+    tax: {
         type: Number,
         required: true,
-       
+
     },
 
-    totammount : {
+    totammount: {
         type: Number,
         required: true,
-       
+
+    },
+    shipto: {
+        type: String,
+        required: true,
     }
 })
 
@@ -38,4 +42,4 @@ module.exports = Receipt;
 
 
 
- 
+
