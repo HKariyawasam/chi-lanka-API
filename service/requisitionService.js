@@ -4,9 +4,8 @@ const { v4: uuidv4 } = require("uuid");
 let Requisition = require("../class/Requisition");
 
 router.route("/addRequisition").post((req, res) => {
-    const requisitionid = uuidv4();
+    const requisitionid = req.body.orderid;
     const requisiondate = moment(req.body.orderdate).format('YYYY-MMMM-DD');
-    const requisitionname = req.body.orderid;
     const suppliername = req.body.suppliername;
     const title = req.body.title;
     const shipto = req.body.shipto;
@@ -29,7 +28,6 @@ router.route("/addRequisition").post((req, res) => {
     const newRequisition = new Requisition({
         requisitionid,
         requisiondate,
-        requisitionname,
         suppliername,
         title,
         shipto,
@@ -74,7 +72,7 @@ router.route("/getRequisitionByID/:rID").get(async (req, res) => {
 
     let rID = req.params.rID;
 
-    const requisition = await Requisition.findOne({ requisitionname: rID })
+    const requisition = await Requisition.findOne({ requisitionid: rID })
         .then((requisition) => {
             if (requisition == null) {
                 res.status(200).send({ status: "No Requisition Record Retrieved" })
@@ -82,7 +80,7 @@ router.route("/getRequisitionByID/:rID").get(async (req, res) => {
             else {
                 res.status(200).send({ status: "Rental Requisition Retrieved", requisition: requisition })
             }
-        }).catch(() => {
+        }).catch((err) => {
             console.log(err.message);
             res.status(500).send({ status: "Server error", error: err.message });
         })
@@ -93,11 +91,11 @@ router.route("/getRequisitionByID/:rID").get(async (req, res) => {
 router.route("/deleteRequisition").post(async (req, res) => {
 
     let rID = req.body.data.id;
-    await Requisition.findOneAndDelete({ id: rID })
+    await Requisition.findOneAndDelete({ requisitionid: rID })
         .then(() => {
             res.status(200).send({ status: "Requisition Record deleted" });
-        }).catch(() => {
-            console.log(err);
+        }).catch((error) => {
+            console.log(error);
             res.status(500).send({ status: "Error with deleting requisition record", error: err.message });
         })
 })
@@ -116,7 +114,7 @@ router.route("/updateRequisition/:rID").put(async (req, res) => {
         itemName03, qty01, qty02, qty03, amount01, amount02, amount03
     }
 
-    const update = await Requisition.findOneAndUpdate({ requisition: rID }, updateRequisition)
+    const update = await Requisition.findOneAndUpdate({ requisitionid: rID }, updateRequisition)
         .then(() => {
             res.status(200).send({ status: "Requisition Record updated" })
 
