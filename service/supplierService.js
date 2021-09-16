@@ -83,7 +83,7 @@ router.route("/getSupplierByName/:sName").get(async (req, res) => {
 
     let sName = req.params.sName;//rental id taken from front end
 
-    Supplier.find({ suppliername: { $regex: "^" + sName + ".*", $options: 'i' } }).then((supplier) => {
+    Supplier.findOne({ suppliername: { $regex: "^" + sName + ".*", $options: 'i' } }).then((supplier) => {
         res.json(supplier)
 
     }).catch(() => {
