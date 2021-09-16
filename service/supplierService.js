@@ -92,6 +92,19 @@ router.route("/getSupplierByName/:sName").get(async (req, res) => {
     })
 })
 
+router.route("/getSupplierByID/:itemid").get(async (req, res) => {
+
+    let sName = req.params.itemid;//rental id taken from front end
+
+    Supplier.findOne({ itemid: { $regex: "^" + sName + ".*", $options: 'i' } }).then((supplier) => {
+        res.json(supplier)
+
+    }).catch(() => {
+        console.log(err.message);
+        res.status(500).send({ status: "Server error", error: err.message });
+    })
+})
+
 
 router.route("/searchSupplierItems/:supplier").get((req, res) => {
 
