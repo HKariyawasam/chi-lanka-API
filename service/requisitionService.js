@@ -21,9 +21,9 @@ router.route("/addRequisition").post((req, res) => {
     const qty01 = Number(req.body.qty01);
     const qty02 = Number(req.body.qty02);
     const qty03 = Number(req.body.qty03);
-    const amount01 = Number(req.body.qty01);
-    const amount02 = Number(req.body.qty02);
-    const amount03 = Number(req.body.qty03);
+    const amount01 = Number(req.body.amount1);
+    const amount02 = Number(req.body.amount2);
+    const amount03 = Number(req.body.amount3);
 
     const newRequisition = new Requisition({
         requisitionid,
@@ -90,7 +90,7 @@ router.route("/getRequisitionByID/:rID").get(async (req, res) => {
 
 router.route("/deleteRequisition").post(async (req, res) => {
 
-    let rID = req.body.data.id;
+    let rID = req.body.requisition;
     await Requisition.findOneAndDelete({ requisitionid: rID })
         .then(() => {
             res.status(200).send({ status: "Requisition Record deleted" });
