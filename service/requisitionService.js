@@ -4,7 +4,7 @@ const { v4: uuidv4 } = require("uuid");
 let Requisition = require("../class/Requisition");
 
 router.route("/addRequisition").post((req, res) => {
-    const requisitionid = req.body.orderid;
+    const requisitionid = req.body.requisitionid;
     const requisiondate = moment(req.body.orderdate).format('YYYY-MMMM-DD');
     const suppliername = req.body.suppliername;
     const title = req.body.title;
@@ -21,9 +21,9 @@ router.route("/addRequisition").post((req, res) => {
     const qty01 = Number(req.body.qty01);
     const qty02 = Number(req.body.qty02);
     const qty03 = Number(req.body.qty03);
-    const amount01 = Number(req.body.qty01);
-    const amount02 = Number(req.body.qty02);
-    const amount03 = Number(req.body.qty03);
+    const amount01 = Number(req.body.amount1);
+    const amount02 = Number(req.body.amount2);
+    const amount03 = Number(req.body.amount3);
 
     const newRequisition = new Requisition({
         requisitionid,

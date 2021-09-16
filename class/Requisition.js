@@ -6,7 +6,7 @@ const requisitionSchema = new Schema({
 
     requisitionid: {
         type: String,
-        type: true,
+        required: true,
         unique: true
     },
 
