@@ -76,6 +76,17 @@ const requisitionSchema = new Schema({
     },
     qty03: {
         type: Number,
+    },
+
+    amount01: {
+        type: Number,
+        required: true
+    },
+    amount02: {
+        type: Number,
+    },
+    amount03: {
+        type: Number,
     }
 
 })

@@ -3,37 +3,37 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const supplierSchema = new Schema({
-    supplierid : {
+    supplierid: {
         type: String,
         required: true,
-        unique: true 
+        unique: true
     },
 
-    suppliername : {
-        type: String,
-        required: true,
-        maxlength: 200
-    },
-
-    address : {
+    suppliername: {
         type: String,
         required: true,
         maxlength: 200
     },
 
-    contactnumber : {
+    address: {
+        type: String,
+        required: true,
+        maxlength: 200
+    },
+
+    contactnumber: {
         type: Number,
         required: true,
         maxlength: 10,
         minlength: 10
     },
 
-    itemid : {
+    itemid: {
         type: String,
         required: true
     },
 
-    siteid : {
+    siteid: {
         type: String,
         required: true
     }

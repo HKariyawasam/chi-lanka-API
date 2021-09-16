@@ -19,6 +19,9 @@ router.route("/addRequisition").post((req, res) => {
     const qty01 = Number(req.body.qty01);
     const qty02 = Number(req.body.qty02);
     const qty03 = Number(req.body.qty03);
+    const amount01 = Number(req.body.qty01);
+    const amount02 = Number(req.body.qty02);
+    const amount03 = Number(req.body.qty03);
 
     const newRequisition = new Requisition({
         requisitionid,
@@ -35,7 +38,10 @@ router.route("/addRequisition").post((req, res) => {
         item03,
         qty01,
         qty02,
-        qty03
+        qty03,
+        amount01,
+        amount02,
+        amount03
     })
 
     newRequisition.save().then(() => {
@@ -96,9 +102,9 @@ router.route("/updateRequisition/:rID").put(async (req, res) => {
     let rID = req.params.rID;
 
 
-    const { requisitionid,requisitionname, requisiondate, suppliername, title, shipto, status, total, comment, item01, item02, item03, qty01, qty02, qty03 } = req.body;
+    const { requisitionid, requisitionname, requisiondate, suppliername, title, shipto, status, total, comment, item01, item02, item03, qty01, qty02, qty03, amount01, amount02, amount03 } = req.body;
 
-    const updateRequisition = { requisitionid,requisitionname, requisiondate, suppliername, title, shipto, status, total, comment, item01, item02, item03, qty01, qty02, qty03 }
+    const updateRequisition = { requisitionid, requisitionname, requisiondate, suppliername, title, shipto, status, total, comment, item01, item02, item03, qty01, qty02, qty03, amount01, amount02, amount03 }
 
     const update = await Requisition.findOneAndUpdate({ requisitionid: rID }, updateRequisition)
         .then(() => {
