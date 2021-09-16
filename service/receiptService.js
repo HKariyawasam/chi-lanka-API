@@ -8,13 +8,15 @@ router.route("/addReceipt").post((req, res) => {
     const receiptdate = req.body.receiptdate;
     const tax = Number(req.body.tax);
     const totammount = Number(req.body.totammount);
+    const shipto = req.body.shipto;
 
     const newReceipt = new Receipt({
         receiptid,
         orderno,
         receiptdate,
         tax,
-        totammount
+        totammount,
+        shipto
     })
 
     newReceipt.save().then(() => {
