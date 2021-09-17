@@ -66,6 +66,9 @@ app.use("/payment", PaymentRouter);
 const LoginRouter = require("./service/LoginService.js");
 app.use("/login", LoginRouter);
 
+const DraftRouter = require("./service/DraftService.js");
+app.use("/draft", DraftRouter);
+
 
 
 
