@@ -3,9 +3,12 @@ const moment = require('moment');
 let Draft = require("../class/Draft");
 
 router.route("/addDraft").post((req, res) => {
+
+    console.log("req in draft", req.body)
+
     const draftid = req.body.draftid;
     const draftdate = moment(req.body.orderdate).format('YYYY-MMMM-DD');
-    const modifydate =  moment(req.body.modifydate).format('YYYY-MMMM-DD');
+    const modifydate = moment(req.body.modifydate).format('YYYY-MMMM-DD');
     const suppliername = req.body.suppliername;
     const title = req.body.title;
     const shipto = req.body.shipto;
@@ -107,11 +110,11 @@ router.route("/updateDraft/:dID").put(async (req, res) => {
     let dID = req.params.dID;
 
 
-    const { draftid, draftdate,modifydate, suppliername, title, shipto, status, total, comment, item01, item02, item03, itemName01, itemName02,
+    const { draftid, draftdate, modifydate, suppliername, title, shipto, status, total, comment, item01, item02, item03, itemName01, itemName02,
         itemName03, qty01, qty02, qty03, amount01, amount02, amount03 } = req.body;
 
     const updateDraft = {
-        draftid, draftdate,modifydate, suppliername, title, shipto, status, total, comment, item01, item02, item03, itemName01, itemName02,
+        draftid, draftdate, modifydate, suppliername, title, shipto, status, total, comment, item01, item02, item03, itemName01, itemName02,
         itemName03, qty01, qty02, qty03, amount01, amount02, amount03
     }
 
