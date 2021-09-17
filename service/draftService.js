@@ -3,6 +3,9 @@ const moment = require('moment');
 let Draft = require("../class/Draft");
 
 router.route("/addDraft").post((req, res) => {
+
+    console.log("req in draft", req.body)
+
     const draftid = req.body.draftid;
     const draftdate = moment(req.body.orderdate).format('YYYY-MMMM-DD');
     const modifydate = moment(req.body.modifydate).format('YYYY-MMMM-DD');
