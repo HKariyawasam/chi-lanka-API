@@ -75,7 +75,7 @@ router.route("/lastAddedOrder").get(async (req, res) => {
 
     const order = await Order.find().sort({ _id: -1 }).limit(1)
         .then((order) => {
-            res.status(200).send({ status: "Order fetched", order: order })
+            res.json(order)
         }).catch(() => {
             console.log(err.message);
             res.status(500).send({ status: "Error with get Order", error: err.message });

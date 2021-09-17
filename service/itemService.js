@@ -60,12 +60,12 @@ router.route("/displayAvailableItems").get((req, res) => {
 router.route("/updateItem/:itemID").put(async (req, res) => {
 
     let item = req.params.itemID;//items Id taken from the frontend
-    let receivedDate = moment(req.body.ReceivedDate).format("YYYY-MMMM-DD")
+    let ReceivedDate = moment(req.body.ReceivedDate).format("YYYY-MMMM-DD")
 
     var { itemid, itemname, price, Description, availability, Quantity } = req.body;
 
     const updateItem = {//create a object containing the data that needs to be updated
-        itemid, itemname, price, Description, availability, Quantity, receivedDate
+        itemid, itemname, price, Description, availability, Quantity, ReceivedDate
     }
 
     const update = await Item.findOneAndUpdate({ itemid: item }, updateItem)
