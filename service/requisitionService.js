@@ -106,11 +106,11 @@ router.route("/updateRequisition/:rID").put(async (req, res) => {
     let rID = req.params.rID;
 
 
-    const { requisitionid, requisitionname, requisiondate, suppliername, title, shipto, status, total, comment, item01, item02, item03, itemName01, itemName02,
+    const { requisitionid, requisiondate, suppliername, title, shipto, status, total, comment, item01, item02, item03, itemName01, itemName02,
         itemName03, qty01, qty02, qty03, amount01, amount02, amount03 } = req.body;
 
     const updateRequisition = {
-        requisitionid, requisitionname, requisiondate, suppliername, title, shipto, status, total, comment, item01, item02, item03, itemName01, itemName02,
+        requisitionid, requisiondate, suppliername, title, shipto, status, total, comment, item01, item02, item03, itemName01, itemName02,
         itemName03, qty01, qty02, qty03, amount01, amount02, amount03
     }
 
