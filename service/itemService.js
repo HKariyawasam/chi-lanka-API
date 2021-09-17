@@ -6,12 +6,18 @@ router.route("/addItem").post((req, res) => {
     const itemname = req.body.itemname;
     const price = Number(req.body.price);
     const Description = req.body.Description;
+    const availability = req.body.availability;
+    const Quantity = Number(req.body.Quantity);
+    const ReceivedDate = req.body.ReceivedDate;
 
     const newItem = new Item({
         itemid,
         itemname,
         price,
-        Description
+        Description,
+        availability,
+        Quantity,
+        ReceivedDate
     })
 
     newItem.save().then(() => {
@@ -54,10 +60,10 @@ router.route("/updateItem/:itemID").put(async (req, res) => {
 
     let item = req.params.itemID;//items Id taken from the frontend
 
-    const { itemid, itemname, price, Description } = req.body;
+    const { itemid, itemname, price, Description, availability, Quantity, ReceivedDate } = req.body;
 
     const updateItem = {//create a object containing the data that needs to be updated
-        itemid, itemname, price, Description
+        itemid, itemname, price, Description, availability, Quantity, ReceivedDate
     }
 
     const update = await Item.findOneAndUpdate({ itemid: item }, updateItem)
