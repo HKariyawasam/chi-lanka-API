@@ -3,28 +3,46 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const itemSchema = new Schema({
-    itemid : {
+    itemid: {
         type: String,
         required: true,
-        unique: true 
+        unique: true
     },
 
-    itemname : {
+    itemname: {
         type: String,
         required: true,
         maxlength: 200
     },
 
-    price : {
+    price: {
         type: Number,
         required: true,
     },
 
-    Description : {
+    Description: {
         type: String,
         required: true,
         maxlength: 1000,
-       
+
+    },
+
+    availability: {
+        type: String,
+        required: true,
+        enum: ['InStock', 'Out-of Stock', 'Requested'],
+
+    },
+
+    Quantity: {
+        type: Number,
+        required: true,
+
+
+    },
+    ReceivedDate: {
+        type: String,
+        required: true,
     }
 })
 
@@ -33,4 +51,4 @@ module.exports = Item;
 
 
 
- 
+
