@@ -92,9 +92,9 @@ router.route("/getDraftByID/:dID").get(async (req, res) => {
 })
 
 
-router.route("/deleteDraft").post(async (req, res) => {
+router.route("/deleteDraft/:draftid").delete(async (req, res) => {
 
-    let dID = req.body.draft;
+    let dID = req.params.draftid;
     await Draft.findOneAndDelete({ draftid: dID })
         .then(() => {
             res.status(200).send({ status: "Draft Record deleted" });
