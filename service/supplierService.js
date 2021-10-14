@@ -34,7 +34,7 @@ router.route("/removeSupplier/:supID").delete(async (req, res) => {
 
     let supplier = req.params.supID;//supplier id taken from frontend
 
-    await Supplier.findOneAndDelete({ supplierid: supplier })
+    await Supplier.findOneAndDelete({ itemid: supplier })
         .then(() => {
             res.status(200).send({ status: "Supplier deleted" });
         }).catch(() => {
@@ -122,6 +122,21 @@ router.route("/searchSupplierItems/:supplier").get((req, res) => {
     }).catch((err) => {
         //console.log(err);
     })
+
+})
+
+//To delete a specific item
+router.route("/removeItemSupplier/:itemID").delete(async (req, res) => {
+
+    let item = req.params.itemID;//item id taken from frontend
+
+    await Supplier.findOneAndDelete({ itemid: item })
+        .then(() => {
+            res.status(200).send({ status: "Supplier Item deleted" });
+        }).catch(() => {
+            console.log(err);
+            res.status(500).send({ status: "Error with delete of an item", error: err.message });
+        })
 
 })
 

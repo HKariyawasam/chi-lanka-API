@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const moment = require('moment');
 let Item = require("../class/Item");
 
 router.route("/addItem").post((req, res) => {
@@ -8,7 +9,7 @@ router.route("/addItem").post((req, res) => {
     const Description = req.body.Description;
     const availability = req.body.availability;
     const Quantity = Number(req.body.Quantity);
-    const ReceivedDate = req.body.ReceivedDate;
+    const ReceivedDate = moment(req.body.ReceivedDate).format("YYYY-MMMM-DD");
 
     const newItem = new Item({
         itemid,
@@ -59,8 +60,9 @@ router.route("/displayAvailableItems").get((req, res) => {
 router.route("/updateItem/:itemID").put(async (req, res) => {
 
     let item = req.params.itemID;//items Id taken from the frontend
+    let ReceivedDate = moment(req.body.ReceivedDate).format("YYYY-MMMM-DD")
 
-    const { itemid, itemname, price, Description, availability, Quantity, ReceivedDate } = req.body;
+    var { itemid, itemname, price, Description, availability, Quantity } = req.body;
 
     const updateItem = {//create a object containing the data that needs to be updated
         itemid, itemname, price, Description, availability, Quantity, ReceivedDate
@@ -106,6 +108,20 @@ router.route("/getItemByID/:iID").get(async (req, res) => {
             res.status(500).send({ status: "Server error", error: err.message });
         })
 })
+
+//this route is used to find the last added order details
+router.route("/lastAddedItem").get(async (req, res) => {
+
+    const item = await Item.find().sort({ _id: -1 }).limit(1)
+        .then((item) => {
+            res.json(item)
+        }).catch(() => {
+            console.log(err.message);
+            res.status(500).send({ status: "Error with get Item", error: err.message });
+        })
+
+})
+
 
 
 
