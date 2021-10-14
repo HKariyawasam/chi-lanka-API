@@ -4,6 +4,7 @@ const { v4: uuidv4 } = require("uuid");
 let Requisition = require("../class/Requisition");
 
 router.route("/addRequisition").post((req, res) => {
+    //console.log("function called")
     const requisitionid = req.body.requisitionid;
     const requisiondate = moment(req.body.orderdate).format('YYYY-MMMM-DD');
     const suppliername = req.body.suppliername;
@@ -62,7 +63,7 @@ router.route("/displayRequisition").get((req, res) => {
         res.json(requisition)
 
     }).catch((err) => {
-        console.log(err);
+        //console.log(err);
     })
 })
 
@@ -81,7 +82,7 @@ router.route("/getRequisitionByID/:rID").get(async (req, res) => {
                 res.status(200).send({ status: "Rental Requisition Retrieved", requisition: requisition })
             }
         }).catch((err) => {
-            console.log(err.message);
+            //console.log(err.message);
             res.status(500).send({ status: "Server error", error: err.message });
         })
 
@@ -95,7 +96,7 @@ router.route("/deleteRequisition").post(async (req, res) => {
         .then(() => {
             res.status(200).send({ status: "Requisition Record deleted" });
         }).catch((error) => {
-            console.log(error);
+            //console.log(error);
             res.status(500).send({ status: "Error with deleting requisition record", error: err.message });
         })
 })
@@ -119,7 +120,7 @@ router.route("/updateRequisition/:rID").put(async (req, res) => {
             res.status(200).send({ status: "Requisition Record updated" })
 
         }).catch((err) => {
-            console.log(err);
+            //console.log(err);
             res.status(500).send({ status: "Error with updating requisition record", error: err.message });
         })
 

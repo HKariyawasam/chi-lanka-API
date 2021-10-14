@@ -4,7 +4,7 @@ let Draft = require("../class/Draft");
 
 router.route("/addDraft").post((req, res) => {
 
-    console.log("req in draft", req.body)
+    //console.log("req in draft", req.body)
 
     const draftid = req.body.draftid;
     const draftdate = moment(req.body.orderdate).format('YYYY-MMMM-DD');
@@ -66,7 +66,7 @@ router.route("/displayDraft").get((req, res) => {
         res.json(draft)
 
     }).catch((err) => {
-        console.log(err);
+        //console.log(err);
     })
 })
 
@@ -85,21 +85,21 @@ router.route("/getDraftByID/:dID").get(async (req, res) => {
                 res.status(200).send({ status: "Draft Retrieved", draft: draft })
             }
         }).catch((err) => {
-            console.log(err.message);
+            //console.log(err.message);
             res.status(500).send({ status: "Server error", error: err.message });
         })
 
 })
 
 
-router.route("/deleteDraft").post(async (req, res) => {
+router.route("/deleteDraft/:draftid").delete(async (req, res) => {
 
-    let dID = req.body.draft;
+    let dID = req.params.draftid;
     await Draft.findOneAndDelete({ draftid: dID })
         .then(() => {
             res.status(200).send({ status: "Draft Record deleted" });
         }).catch((error) => {
-            console.log(error);
+            //console.log(error);
             res.status(500).send({ status: "Error with deleting draft record", error: err.message });
         })
 })
@@ -123,7 +123,7 @@ router.route("/updateDraft/:dID").put(async (req, res) => {
             res.status(200).send({ status: "Draft Record updated" })
 
         }).catch((err) => {
-            console.log(err);
+            //console.log(err);
             res.status(500).send({ status: "Error with updating draft record", error: err.message });
         })
 

@@ -38,7 +38,7 @@ router.route("/removeSupplier/:supID").delete(async (req, res) => {
         .then(() => {
             res.status(200).send({ status: "Supplier deleted" });
         }).catch(() => {
-            console.log(err);
+            //console.log(err);
             res.status(500).send({ status: "Error with delete of a supplier", error: err.message });
         })
 
@@ -53,7 +53,7 @@ router.route("/displayAvailableSupplierList").get((req, res) => {
         res.json(supplier)
 
     }).catch((err) => {
-        console.log(err);
+        //console.log(err);
     })
 })
 
@@ -73,7 +73,7 @@ router.route("/updateSupplierDetails/:supID").put(async (req, res) => {
         .then(() => {
             res.status(200).send({ status: "Supplier Details updated" })//sending details of the updated data back to front end
         }).catch((err) => {
-            console.log(err);
+            //console.log(err);
             res.status(500).send({ status: "Error with updating data of supplier", error: err.message });
         })
 
@@ -87,7 +87,7 @@ router.route("/getSupplierByName/:sName").get(async (req, res) => {
         res.json(supplier)
 
     }).catch(() => {
-        console.log(err.message);
+        //console.log(err.message);
         res.status(500).send({ status: "Server error", error: err.message });
     })
 })
@@ -100,7 +100,7 @@ router.route("/getSupplierByID/:itemid").get(async (req, res) => {
         res.json(supplier)
 
     }).catch(() => {
-        console.log(err.message);
+        //console.log(err.message);
         res.status(500).send({ status: "Server error", error: err.message });
     })
 })
@@ -120,7 +120,7 @@ router.route("/searchSupplierItems/:supplier").get((req, res) => {
         res.json(values);
 
     }).catch((err) => {
-        console.log(err);
+        //console.log(err);
     })
 
 })

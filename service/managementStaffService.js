@@ -8,7 +8,7 @@ router.route("/getManagementList").get((req, res) => {
         res.json(managementStaff)
 
     }).catch((err) => {
-        console.log(err);
+        //console.log(err);
     })
 })
 

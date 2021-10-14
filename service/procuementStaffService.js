@@ -8,7 +8,7 @@ router.route("/getProcuementStaffList").get((req, res) => {
         res.json(procuement)
 
     }).catch((err) => {
-        console.log(err);
+        //console.log(err);
     })
 })
 

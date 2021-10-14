@@ -10,7 +10,7 @@ router.route("/getSiteManagersList").get((req, res) => {
         res.json(siteManager)
 
     }).catch((err) => {
-        console.log(err);
+        //console.log(err);
     })
 })
 

@@ -11,7 +11,7 @@ router.route("/addReceipt").post((req, res) => {
     const shipto = req.body.shipto;
 
     const newReceipt = new Receipt({
-        receiptid,
+        receiptid: receiptid.toString().slice(0, 8),
         orderno,
         receiptdate,
         tax,
@@ -34,7 +34,7 @@ router.route("/viewAReceipt/:receiptId").get((req, res) => {
         res.json(receipt)
 
     }).catch((err) => {
-        console.log(err);
+        //console.log(err);
     })
 
 })
@@ -46,7 +46,7 @@ router.route("/displayReceipts").get((req, res) => {
         res.json(receipt)
 
     }).catch((err) => {
-        console.log(err);
+        //console.log(err);
     })
 })
 

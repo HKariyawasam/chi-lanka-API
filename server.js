@@ -22,11 +22,11 @@ mongoose.connect(URL, {
 
 const connection = mongoose.connection;
 connection.once("open", () => {
-    console.log("Mongodb Connection success!");
+    //console.log("Mongodb Connection success!");
 })
 
 app.listen(port, () => {
-    console.log(`Server Is Running on Port: ${port}`);
+    //console.log(`Server Is Running on Port: ${port}`);
 })
 
 const supplierRouter = require("./service/supplierService.js");

@@ -36,7 +36,7 @@ router.route("/removeItem/:itemID").delete(async (req, res) => {
         .then(() => {
             res.status(200).send({ status: "Item deleted" });
         }).catch(() => {
-            console.log(err);
+            //console.log(err);
             res.status(500).send({ status: "Error with delete of an item", error: err.message });
         })
 
@@ -50,7 +50,7 @@ router.route("/displayAvailableItems").get((req, res) => {
         res.json(item)
 
     }).catch((err) => {
-        console.log(err);
+        //console.log(err);
     })
 })
 
@@ -70,7 +70,7 @@ router.route("/updateItem/:itemID").put(async (req, res) => {
         .then(() => {
             res.status(200).send({ status: "Item Details updated" })//sending details of the updated data back to front end
         }).catch((err) => {
-            console.log(err);
+            //console.log(err);
             res.status(500).send({ status: "Error with updating data of an Item", error: err.message });
         })
 
@@ -84,7 +84,7 @@ router.route("/searchAnItem/:itemName").get((req, res) => {
         res.json(items)
 
     }).catch((err) => {
-        console.log(err);
+        //console.log(err);
     })
 
 })
@@ -102,7 +102,7 @@ router.route("/getItemByID/:iID").get(async (req, res) => {
                 res.status(200).send({ status: "Order Record Retrieved", item: item })
             }
         }).catch(() => {
-            console.log(err.message);
+            //console.log(err.message);
             res.status(500).send({ status: "Server error", error: err.message });
         })
 })

@@ -34,7 +34,7 @@ router.route("/removePayment/:oID").delete(async (req, res) => {
         .then(() => {
             res.status(200).send({ status: "Payment deleted" });
         }).catch(() => {
-            console.log(err);
+            //console.log(err);
             res.status(500).send({ status: "Error with delete of a payment", error: err.message });
         })
 
@@ -57,7 +57,7 @@ router.route("/updatePayment/:oID").put(async (req, res) => {
         .then(() => {
             res.status(200).send({ status: "Payment Details updated" })//sending details of the updated data back to front end
         }).catch((err) => {
-            console.log(err);
+            //console.log(err);
             res.status(500).send({ status: "Error with updating data of an Payment", error: err.message });
         })
 
@@ -71,7 +71,7 @@ router.route("/searchAnPayment/:oID").get((req, res) => {
         res.json(payment)
 
     }).catch((err) => {
-        console.log(err);
+        //console.log(err);
     })
 
 })

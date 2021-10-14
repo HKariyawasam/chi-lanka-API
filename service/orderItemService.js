@@ -48,7 +48,7 @@ router.route("/displayOrderItems/:orderId").get(async (req, res) => {
         .then((orderItems) => {
             res.json(orderItems)
         }).catch(() => {
-            console.log(err.message);
+            //console.log(err.message);
             res.status(500).send({ status: "Server error", error: err.message });
         })
 })
@@ -60,7 +60,7 @@ router.route("/deleteOrderItems/:orderID").delete(async (req, res) => {
         .then(() => {
             res.status(200).send({ status: "Order Record deleted" });
         }).catch(() => {
-            console.log(err);
+            //console.log(err);
             res.status(500).send({ status: "Error with deleting order record", error: err.message });
         })
 })
@@ -78,7 +78,7 @@ router.route("/updateOrderItems/:orderid").put(async (req, res) => {
         .then(() => {
             res.status(200).send({ status: "Order Record updated" })
         }).catch((err) => {
-            console.log(err);
+            //console.log(err);
             res.status(500).send({ status: "Server error Error with updating data", error: err.message });
         })
 

@@ -31,7 +31,7 @@ router.route("/addStaff").post((req, res) => {
 
             res.status(200).send({ message: "WorkSite Manager Record is Added" })
         }).catch((err) => {//error or exception handling
-            //console.log(err);
+            ////console.log(err);
             res.status(300).send({ status: "Error in WorkSite Manager Record Insertion", error: err.message });
         })
 
@@ -45,7 +45,7 @@ router.route("/addStaff").post((req, res) => {
 
             res.status(200).send({ message: "Procuement_Staff Record is Added" })
         }).catch((err) => {//error or exception handling
-            //console.log(err);
+            ////console.log(err);
             res.status(300).send({ status: "Error in Procuement_Staff Record Insertion", error: err.message });
         })
 
@@ -71,7 +71,7 @@ router.route("/addStaff").post((req, res) => {
 
             res.status(200).send({ message: "Staff Record is Added" })
         }).catch((err) => {//error or exception handling
-            //console.log(err);
+            ////console.log(err);
             res.status(300).send({ status: "Error in Staff Record Insertion", error: err.message });
         })
 
@@ -90,7 +90,7 @@ router.route("/deleteStaff/:sid/:designation").delete(async (req, res) => {
             .then(() => {
                 res.status(200).send({ status: "SiteManager Record deleted" });
             }).catch(() => {
-                console.log(err);
+                //console.log(err);
                 res.status(500).send({ status: "Error with deleting SiteManager record", error: err.message });
             })
 
@@ -100,7 +100,7 @@ router.route("/deleteStaff/:sid/:designation").delete(async (req, res) => {
             .then(() => {
                 res.status(200).send({ status: "Procuement_Staff Record deleted" });
             }).catch(() => {
-                console.log(err);
+                //console.log(err);
                 res.status(500).send({ status: "Error with deleting Procuement_Staff record", error: err.message });
             })
 
@@ -110,7 +110,7 @@ router.route("/deleteStaff/:sid/:designation").delete(async (req, res) => {
             .then(() => {
                 res.status(200).send({ status: "Management Staff Record deleted" });
             }).catch(() => {
-                console.log(err);
+                //console.log(err);
                 res.status(500).send({ status: "Error with deleting Management staff record", error: err.message });
             })
 
@@ -119,7 +119,7 @@ router.route("/deleteStaff/:sid/:designation").delete(async (req, res) => {
             .then(() => {
                 res.status(200).send({ status: "Staff Record deleted" });
             }).catch(() => {
-                console.log(err);
+                //console.log(err);
                 res.status(500).send({ status: "Error with deleting staff record", error: err.message });
             })
 
@@ -145,7 +145,7 @@ router.route("/deleteStaff/:sid/:designation").delete(async (req, res) => {
                 .then(() => {
                     res.status(200).send({ status: "SiteManager updated" })//sending details of the updated data back to front end
                 }).catch((err) => {
-                    console.log(err);
+                    //console.log(err);
                     res.status(500).send({ status: "Error with updating data", error: err.message });
                 })
 
@@ -158,7 +158,7 @@ router.route("/deleteStaff/:sid/:designation").delete(async (req, res) => {
                 .then(() => {
                     res.status(200).send({ status: "ProcumentStaff updated" })//sending details of the updated data back to front end
                 }).catch((err) => {
-                    console.log(err);
+                    //console.log(err);
                     res.status(500).send({ status: "Error with updating data", error: err.message });
                 })
 
@@ -171,7 +171,7 @@ router.route("/deleteStaff/:sid/:designation").delete(async (req, res) => {
                 .then(() => {
                     res.status(200).send({ status: "ManagementStaff updated" })//sending details of the updated data back to front end
                 }).catch((err) => {
-                    console.log(err);
+                    //console.log(err);
                     res.status(500).send({ status: "Error with updating data", error: err.message });
                 })
 
@@ -184,7 +184,7 @@ router.route("/deleteStaff/:sid/:designation").delete(async (req, res) => {
                 .then(() => {
                     res.status(200).send({ status: "Staff updated" })//sending details of the updated data back to front end
                 }).catch((err) => {
-                    console.log(err);
+                    //console.log(err);
                     res.status(500).send({ status: "Error with updating data", error: err.message });
                 })
 
